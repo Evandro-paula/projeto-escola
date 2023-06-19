@@ -5,19 +5,20 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  ScrollView,
+  ScrollView, Picker,
 } from 'react-native';
 import { Card } from 'react-native-elements';
 
 import styles from '../styles/styleGlobal';
 
 export default function SportsForm() {
-  const [nomeEscola, setNomeEscola] = useState('');
+  const [selectedValue, setSelectedValue] = useState('');
+  //const [nomeEscola, setNomeEscola] = useState('');
   const [turma, setNomeTurma] = useState('');
-
   const [nomeAtleta, setNomeAtleta] = useState('');
   const [idadeAtleta, setIdadeAtleta] = useState('');
-  const [sexoAtleta, setSexoAtleta] = useState('');
+  const [sexoAtleta, setSexoSelectedValue] = useState('');
+  //const [sexoAtleta, setSexoAtleta] = useState('');
   const [alturaAtleta, setAlturaAtleta] = useState('');
   const [pesoAtleta, setPesoAtleta] = useState('');
 
@@ -25,20 +26,19 @@ export default function SportsForm() {
 
   const handleSave = () => {
     alert(
-      `Escola ${nomeEscola} / Turma ${turma} / Aluno ${nomeAtleta} / Idade ${idadeAtleta} / Sexo ${sexoAtleta} / Altura ${alturaAtleta} / Peso ${pesoAtleta} / Modalidade ${modalidade}`
+      `Escola ${selectedValue} / Turma ${turma} / Aluno ${nomeAtleta} / Idade ${idadeAtleta} / Sexo ${sexoAtleta} / Altura ${alturaAtleta} / Peso ${pesoAtleta} / Modalidade ${modalidade}`
     );
   };
 
   return (
     <View style={styles.container}>
-  
-    <ScrollView>
-      <Card containerStyle={styles.card}>
-        <Text style={styles.title}>Registro do Atleta</Text>
 
-        <Card.Divider />
+      <ScrollView>
+        <Card containerStyle={styles.card}>
+          <Text style={styles.title}>Registro do Atleta</Text>
 
-       
+          <Card.Divider />
+
           <Card
             containerStyle={
               (styles.card, { backgroundColor: 'rgba(255, 255, 0, 0.3)' })
@@ -46,11 +46,16 @@ export default function SportsForm() {
             <Text style={styles.subtitle}>📚 Escola 🏫</Text>
 
             <Text>Escola</Text>
-            <TextInput
-              style={styles.input}
-              value={nomeEscola}
-              onChangeText={(text) => setNomeEscola(text)}
-            />
+            <View>
+              <Picker
+                selectedValue={selectedValue}
+                style={styles.input}
+                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+              >
+                <Picker.Item label="Unileste" value="Unileste" />
+                <Picker.Item label="Escola Municipal Maria da Penha Lima" value="Escola Municipal Maria da Penha Lima" />
+              </Picker>
+            </View>
 
             <Text>Turma</Text>
             <TextInput
@@ -81,12 +86,17 @@ export default function SportsForm() {
             />
 
             <Text>Sexo</Text>
-            <TextInput
-              style={styles.input}
-              value={sexoAtleta}
-              onChangeText={(text) => setSexoAtleta(text)}
-            />
-
+            <View>
+              <Picker
+                selectedValue={sexoAtleta}
+                style={styles.input}
+                onValueChange={(itemValue, itemIndex) => setSexoSelectedValue(itemValue)}
+              >
+                <Picker.Item label="Masculino" value="Masculino" />
+                <Picker.Item label="Feminino" value="Feminino" />
+              </Picker>
+            </View>
+            
             <Text>Altura</Text>
             <TextInput
               style={styles.input}
@@ -114,20 +124,20 @@ export default function SportsForm() {
               onChangeText={(text) => setModalidade(text)}
             />
           </Card>
-  
-        <Card.Divider />
 
-        <TouchableOpacity style={styles.button} onPress={handleSave}>
-          <Text style={styles.buttonText}>Confirmar Cadastro</Text>
-        </TouchableOpacity>
-      </Card>
-        </ScrollView>
+          <Card.Divider />
+
+          <TouchableOpacity style={styles.button} onPress={handleSave}>
+            <Text style={styles.buttonText}>Confirmar Cadastro</Text>
+          </TouchableOpacity>
+        </Card>
+      </ScrollView>
     </View>
   );
 }
 
 const stylesG = StyleSheet.create({
- 
+
   title: {
     fontSize: 40,
     fontWeight: 'bold',

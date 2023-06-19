@@ -5,6 +5,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#4682B4',
+
+  },
+
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+
+  },
+
+  subtitle:{
+    fontSize: 20,
+    textAlign: 'center',
+
   },
 
   logoPrefeitura: {
@@ -17,12 +32,19 @@ const styles = StyleSheet.create({
   card: {
     marginTop: 90,
     marginBottom: 90,
-
-    borderRadius: 10,
     backgroundColor: '#fff',
     padding: 20,
   },
 
+  input: {
+    height: 'auto',
+    width: 'auto',
+    borderWidth: 1,
+    borderColor: '#01A9DB',
+    borderRadius: 5,
+    marginTop: 1,
+    padding: 10,
+  },
   avatarUsuario: {
     height: 250,
     width: 250,
@@ -53,11 +75,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
+
 
   botao: {
     justifyContent: 'center',

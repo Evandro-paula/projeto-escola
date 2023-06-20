@@ -10,7 +10,7 @@ import {
 import { Card } from 'react-native-elements';
 
 import styles from '../styles/styleGlobal';
-
+ 
 export default function SportsForm() {
   const [selectedValue, setSelectedValue] = useState('');
   //const [nomeEscola, setNomeEscola] = useState('');
@@ -21,7 +21,6 @@ export default function SportsForm() {
   //const [sexoAtleta, setSexoAtleta] = useState('');
   const [alturaAtleta, setAlturaAtleta] = useState('');
   const [pesoAtleta, setPesoAtleta] = useState('');
-
   const [modalidade, setModalidade] = useState('');
 
   const handleSave = () => {

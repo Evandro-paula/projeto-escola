@@ -49,7 +49,7 @@ const App = () => {
     <View style={{ flex: 1, backgroundColor: '#51AFF3' }}>
       <View style={{ height: 105, backgroundColor: '#2759A4', justifyContent: 'center', alignItems: 'center' }}>
         <Image
-          source={require('./LogoPrefeitura.png')}
+          source={require('../LogoPrefeitura.png')}
           style={{ maxHeight: 55, maxWidth: 220, minHeight: 55, minWidth: 220 }}
         />
       </View>
@@ -58,7 +58,7 @@ const App = () => {
 
       <View style={{ alignItems: 'center' }}>
         <Image
-          source={require('./Esporte.png')}
+          source={require('../Esporte.png')}
           style={{ borderRadius: 10, margin: 40 }}
         />
       </View>
@@ -78,7 +78,7 @@ const App = () => {
           onPress={handleLast}
         >
           <Image
-            source={require('./left.png')}
+            source={require('../left.png')}
             style={{ width: 30, height: 30, borderRadius: 3 }}
           />
         </TouchableOpacity>
@@ -99,7 +99,7 @@ const App = () => {
           onPress={handleNext}
         >
           <Image
-            source={require('./right.png')}
+            source={require('../right.png')}
             style={{ width: 30, height: 30, borderRadius: 3 }}
           />
         </TouchableOpacity>
@@ -150,7 +150,7 @@ const App = () => {
                   }}
                 >
                   <Image
-                    source={require('./snack-icon.png')}
+                    source={require('../snack-icon.png')}
                     style={{ width: 15, height: 15, tintColor: '#2759A4' }}
                   />
                 </TouchableOpacity>

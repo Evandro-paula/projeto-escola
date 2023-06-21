@@ -22,7 +22,7 @@ export default function Rotas() {
       tabBarOptions={{
         style: styles.tabBar,
         activeTintColor: 'blue',
-        inactiveTintColor: '#4B0082',
+        inactiveTintColor: '#4682B4',
       }}
       initialRouteName={Lobby}
       screenOptions={{

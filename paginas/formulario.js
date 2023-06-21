@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import {Picker} from '@react-native-community/picker';
 import {
   StyleSheet,
   View,
   Text,
   TextInput,
   TouchableOpacity,
-  ScrollView, Picker,
+  ScrollView,
 } from 'react-native';
 import { Card } from 'react-native-elements';
 
@@ -21,7 +22,16 @@ export default function SportsForm() {
   //const [sexoAtleta, setSexoAtleta] = useState('');
   const [alturaAtleta, setAlturaAtleta] = useState('');
   const [pesoAtleta, setPesoAtleta] = useState('');
-  const [modalidade, setModalidade] = useState('');
+  const [modalidade, setModalidade] = useState("Todos",
+  "Futebol",
+  "Volei",
+  "Xadrez",
+  "Basquete",
+  "Handbol",
+  "Truco",
+  "Tenis",
+  "Natação",
+  "Corrida");
 
   const handleSave = () => {
     alert(

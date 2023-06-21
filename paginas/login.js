@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { SafeAreaView, View,  Text, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
-import { Card, Input } from 'react-native-elements';
+import { TextInput, SafeAreaView, View,  Text, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
+
 const avatar = require('../assets/logoEmblema.png');
 
 export default function Login({ navigation }) {
@@ -30,27 +30,22 @@ export default function Login({ navigation }) {
   return (
     <SafeAreaView style={stylesG.container}>
     <ScrollView >
-      <View style={stylesG.container}>
+
+       
+      <View style={stylesG.view}>
         <Image source={avatar} style={stylesG.logoPrefeitura} />
       </View>
-      <Card style={stylesG.card}>
-        <Card.Divider />
+ 
         <Text style={stylesG.text}>Email</Text>
-        <Input
+        <TextInput
           type="Text"
           placeholder="Email"
           style={stylesG.Input}
           value={usuario}
           onChangeText={setUsuario}
-        />
+        ></TextInput>
         <Text style={stylesG.text}>Senha</Text>
-        <Input
-          type="Text"
-          placeholder="Senha"
-          style={stylesG.Input}
-          value={senha}
-          onChangeText={setSenha}
-        />
+        <TextInput style={stylesG.Input} value={senha} onChangeText={setSenha} placeholder="Senha"></TextInput>
 
         <TouchableOpacity style={stylesG.botao} onPress={ExisteEsseUsuario}>
           <Text style={stylesG.textoDoBotao}>Acessar</Text>
@@ -67,7 +62,7 @@ export default function Login({ navigation }) {
             Esqueceu a senha? Reinicie sua senha aqui
           </Text>
         </TouchableOpacity>
-      </Card>
+
     </ScrollView>
     </SafeAreaView>
   );
@@ -79,20 +74,14 @@ const stylesG = StyleSheet.create({
     justifyContent: 'flex',
     alignItems: 'center',
     backgroundColor: 'white',
-    marginTop: 20,
+    },
 
-
-  },
-  card: {
+    view: {
+    flex: 1,
+    justifyContent: 'flex',
+    alignItems: 'center',
     backgroundColor: 'white',
-
-  },
-
-  text: {
-    fontWeight: 'bold',
-    padding: 10,
-
-
+    marginTop: 30,
   },
 
   logoPrefeitura: {
@@ -102,6 +91,23 @@ const stylesG = StyleSheet.create({
     height: 100,
     marginBottom: 20,
   },
+
+  text: {
+    fontWeight: 'bold',
+    padding: 5,
+    marginTop: 5,
+  },
+
+  Input: {
+    height: 50,
+    width: 'auto',
+    borderWidth: 1,
+    borderColor: '#01A9DB',
+    borderRadius: 5,
+    padding: 5,
+
+  },
+
   botao: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -109,7 +115,7 @@ const stylesG = StyleSheet.create({
     height: 50,
     borderRadius: 5,
     backgroundColor: 'blue',
-    marginTop: 10,
+    marginTop: 25,
     marginBottom: 5,
   },
 
@@ -118,16 +124,6 @@ const stylesG = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-  },
-
-  Input: {
-    height: 50,
-    width: 50,
-    borderWidth: 1,
-    borderColor: '#01A9DB',
-    borderRadius: 5,
-    marginTop: 1,
-    padding: 10,
   },
 
   linkText: {

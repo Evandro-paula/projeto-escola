@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, Button, TextInput, FlatList, TouchableOpacity, Modal, ScrollView } from 'react-native';
-import { data } from './data.js';
-
+import { data as dbData } from './data.js';
+import cabPrefeitura from '../components/CabPrefeituraLogo';
 const App = () => {
+  const [data, setData] = useState(dbData);
   const [search, setSearch] = useState('');
   const [selectedItem, setSelectedItem] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -39,6 +40,7 @@ const App = () => {
   }
 
   useEffect(() => {
+    setData (dbData)
     const filtered = data.filter((item) => {
       return search.toLowerCase() === '' ? true : item.name.toLowerCase().includes(search.toLowerCase());
     });
@@ -47,18 +49,16 @@ const App = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#51AFF3' }}>
+      <cabPrefeitura />
       <View style={{ height: 105, backgroundColor: '#2759A4', justifyContent: 'center', alignItems: 'center' }}>
-        <Image
-          source={require('../LogoPrefeitura.png')}
-          style={{ maxHeight: 55, maxWidth: 220, minHeight: 55, minWidth: 220 }}
-        />
+        
       </View>
       <Text style={{ fontFamily: 'Verdana', fontSize: 25, fontWeight: 'bold', color: 'white', textAlign: 'center', textTransform: 'uppercase' }}>Atletas</Text>
       <Text style={{ fontFamily: 'Verdana', fontSize: 25, fontWeight: 'bold', color: 'white', textAlign: 'center', textTransform: 'uppercase' }}>registrados</Text>
 
       <View style={{ alignItems: 'center' }}>
         <Image
-          source={require('../Esporte.png')}
+          source={require('../assets/Esporte.png')}
           style={{ borderRadius: 10, margin: 40 }}
         />
       </View>
@@ -78,7 +78,7 @@ const App = () => {
           onPress={handleLast}
         >
           <Image
-            source={require('../left.png')}
+            source={require('../assets/left.png')}
             style={{ width: 30, height: 30, borderRadius: 3 }}
           />
         </TouchableOpacity>
@@ -99,7 +99,7 @@ const App = () => {
           onPress={handleNext}
         >
           <Image
-            source={require('../right.png')}
+            source={require('../assets/right.png')}
             style={{ width: 30, height: 30, borderRadius: 3 }}
           />
         </TouchableOpacity>
@@ -150,7 +150,7 @@ const App = () => {
                   }}
                 >
                   <Image
-                    source={require('../snack-icon.png')}
+                    source={require('../assets/snack-icon.png')}
                     style={{ width: 15, height: 15, tintColor: '#2759A4' }}
                   />
                 </TouchableOpacity>

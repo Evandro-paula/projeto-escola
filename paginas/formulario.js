@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Picker} from '@react-native-community/picker';
+import {data} from './data';
 import {
   StyleSheet,
   View,
@@ -9,9 +10,8 @@ import {
   ScrollView,
 } from 'react-native';
 import { Card } from 'react-native-elements';
+import cabPrefeitura from '../components/CabPrefeituraLogo';
 
-import styles from '../styles/styleGlobal';
- 
 export default function SportsForm() {
   const [selectedValue, setSelectedValue] = useState('');
   //const [nomeEscola, setNomeEscola] = useState('');
@@ -35,13 +35,23 @@ export default function SportsForm() {
 
   const handleSave = () => {
     alert(
+      
       `Escola ${selectedValue} / Turma ${turma} / Aluno ${nomeAtleta} / Idade ${idadeAtleta} / Sexo ${sexoAtleta} / Altura ${alturaAtleta} / Peso ${pesoAtleta} / Modalidade ${modalidade}`
     );
+    data.push({
+      age: idadeAtleta,
+      lastname: '',
+      name: nomeAtleta,
+      sport: modalidade,
+      school: selectedValue,
+      id: data.length + 1,
+    });
+    data.forEach((dado)=> console.log(dado))
   };
 
   return (
     <View style={styles.container}>
-
+<cabPrefeitura />
       <ScrollView>
         <Card containerStyle={styles.card}>
           <Text style={styles.title}>Registro do Atleta</Text>
@@ -145,7 +155,7 @@ export default function SportsForm() {
   );
 }
 
-const stylesG = StyleSheet.create({
+const styles = StyleSheet.create({
 
   title: {
     fontSize: 40,

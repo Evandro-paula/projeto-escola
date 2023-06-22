@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Dimensions, Image  } from 'react-native';
 import Swiper from 'react-native-swiper';
-
+import cabPrefeitura from '../components/CabPrefeituraLogo';
 const { width } = Dimensions.get('window');
 
-import CabPrefeituraLogo from '../componentes/CabPrefeituraLogo';
+import CabPrefeituraLogo from '../components/CabPrefeituraLogo';
 
 
 export default function Lobby() {
@@ -12,7 +12,7 @@ export default function Lobby() {
   return (
     <View style={styles.container}>
 
-    <CabPrefeituraLogo/>
+    <CabPrefeituraLogo />
 
       <Swiper style={styles.wrapper} autoplay={true} dotColor="#4682B4" activeDotColor="blue">
         <View style={styles.slide}>

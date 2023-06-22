@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
-
+import cabPrefeitura from '../components/CabPrefeituraLogo';
 import stylesG from '../styles/styleGlobal';
 
 export default function Perfil() {
   return (
     <View style={stylesG.container}>
+      <cabPrefeitura />
       <Card containerStyle={stylesG.card}>
         <View style={stylesG.jogaDladinho}>
           <Image

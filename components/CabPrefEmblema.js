@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Image, Dimensions } from 'react-native';
 
-const { width , height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const CabPrefeituraLogo = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assets/LogoPrefeituraV2.png')}
+        source={require('../assets/logoEmblema.png')}
         style={styles.image}
         resizeMode="contain"
       />
@@ -19,17 +19,13 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: height * 0.16,
-    backgroundColor: '#4682B4',
+    height: 100,
+    backgroundColor: '#fff',
     marginTop: 20,
   },
   image: {
-    
-    width: width * 0.5 ,
+    width: width * 0.6,
     height: '100%',
-
-    marginBottom: 50,
-    marginTop: 80 ,
   },
 });
 

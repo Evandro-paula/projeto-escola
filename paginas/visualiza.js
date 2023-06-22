@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, Button, TextInput, FlatList, TouchableOpacity, Modal, ScrollView } from 'react-native';
-import { data as dbData } from './data.js';
-import cabPrefeitura from '../components/CabPrefeituraLogo';
-const App = () => {
+import { data as dbData} from './data.js';
+
+import CabPrefeitura from '../components/CabPrefeituraLogo';
+
+const Visualiza = () => {
   const [data, setData] = useState(dbData);
   const [search, setSearch] = useState('');
   const [selectedItem, setSelectedItem] = useState(null);
@@ -20,7 +22,7 @@ const App = () => {
     "Corrida"
   ]);
   const [esporteAtual, setEsporteAtual] = useState(0);
-  const [filteredData, setFilteredData] = useState(data);
+  const [filteredData, setFilteredData] = useState([]);
 
   function handleOpenModal(item) {
     setSelectedItem(item);
@@ -41,29 +43,37 @@ const App = () => {
 
   useEffect(() => {
     setData (dbData)
-    const filtered = data.filter((item) => {
-      return search.toLowerCase() === '' ? true : item.name.toLowerCase().includes(search.toLowerCase());
-    });
-    setFilteredData(filtered);
-  }, [search]);
+    if (esportes[esporteAtual] === "Todos") {
+      const filteredsearch = data.filter(
+        (item) =>
+          item.name.toLowerCase().includes(search.toLowerCase()) ||
+          item.lastname.toLowerCase().includes(search.toLowerCase())
+      );
+      setFilteredData(filteredsearch);
+    } else {
+      const filtered = data.filter(
+        (item) =>
+          (item.name.toLowerCase().includes(search.toLowerCase()) ||
+          item.lastname.toLowerCase().includes(search.toLowerCase())) &&
+          item.sport === esportes[esporteAtual]
+      );
+      setFilteredData(filtered);
+    }
+  }, [search, esporteAtual]);
 
   return (
     <View style={{ flex: 1, backgroundColor: '#51AFF3' }}>
-      <cabPrefeitura />
-      <View style={{ height: 105, backgroundColor: '#2759A4', justifyContent: 'center', alignItems: 'center' }}>
-        
+    
+      <CabPrefeitura/>
+
+      <View style= {{paddingVertical: 30}}>
       </View>
       <Text style={{ fontFamily: 'Verdana', fontSize: 25, fontWeight: 'bold', color: 'white', textAlign: 'center', textTransform: 'uppercase' }}>Atletas</Text>
       <Text style={{ fontFamily: 'Verdana', fontSize: 25, fontWeight: 'bold', color: 'white', textAlign: 'center', textTransform: 'uppercase' }}>registrados</Text>
 
-      <View style={{ alignItems: 'center' }}>
-        <Image
-          source={require('../assets/Esporte.png')}
-          style={{ borderRadius: 10, margin: 40 }}
-        />
-      </View>
+      
 
-      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'center' , paddingTop: 40}}>
         <TouchableOpacity
           id="btnLast"
           style={{
@@ -150,8 +160,8 @@ const App = () => {
                   }}
                 >
                   <Image
-                    source={require('../assets/snack-icon.png')}
-                    style={{ width: 15, height: 15, tintColor: '#2759A4' }}
+                    source={require('../assets/olhobom.png')}
+                    style={{ width: 20, height: 20, tintColor: '#2759A4' }}
                   />
                 </TouchableOpacity>
                 <Text style={{ flex: 1, paddingVertical: 10, paddingHorizontal: 10 }}>{item.id}</Text>
@@ -216,6 +226,6 @@ const App = () => {
       )}
     </View>
   );
-}
+};
 
-export default App;
+export default Visualiza;

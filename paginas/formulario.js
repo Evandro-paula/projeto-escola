@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {Picker} from '@react-native-community/picker';
-import {data} from './data';
+import { Picker } from '@react-native-community/picker';
+import { data } from './data';
 import {
   StyleSheet,
   View,
@@ -10,32 +10,38 @@ import {
   ScrollView,
 } from 'react-native';
 import { Card } from 'react-native-elements';
-import cabPrefeitura from '../components/CabPrefeituraLogo';
+
+import stylesG from '../styles/styleGlobal';
+
+import CabPrefeitura from '../components/CabPrefeituraLogo';
 
 export default function SportsForm() {
   const [selectedValue, setSelectedValue] = useState('');
-  //const [nomeEscola, setNomeEscola] = useState('');
+
   const [turma, setNomeTurma] = useState('');
+
   const [nomeAtleta, setNomeAtleta] = useState('');
   const [idadeAtleta, setIdadeAtleta] = useState('');
   const [sexoAtleta, setSexoSelectedValue] = useState('');
-  //const [sexoAtleta, setSexoAtleta] = useState('');
+
   const [alturaAtleta, setAlturaAtleta] = useState('');
   const [pesoAtleta, setPesoAtleta] = useState('');
-  const [modalidade, setModalidade] = useState("Todos",
-  "Futebol",
-  "Volei",
-  "Xadrez",
-  "Basquete",
-  "Handbol",
-  "Truco",
-  "Tenis",
-  "Natação",
-  "Corrida");
+
+  const [modalidade, setModalidade] = useState(
+    'Todos',
+    'Futebol',
+    'Volei',
+    'Xadrez',
+    'Basquete',
+    'Handbol',
+    'Truco',
+    'Tenis',
+    'Natação',
+    'Corrida'
+  );
 
   const handleSave = () => {
     alert(
-      
       `Escola ${selectedValue} / Turma ${turma} / Aluno ${nomeAtleta} / Idade ${idadeAtleta} / Sexo ${sexoAtleta} / Altura ${alturaAtleta} / Peso ${pesoAtleta} / Modalidade ${modalidade}`
     );
     data.push({
@@ -46,13 +52,13 @@ export default function SportsForm() {
       school: selectedValue,
       id: data.length + 1,
     });
-    data.forEach((dado)=> console.log(dado))
+    data.forEach((dado) => console.log(dado));
   };
 
   return (
-    <View style={styles.container}>
-<cabPrefeitura />
-      <ScrollView>
+    <View style={stylesG.container}>
+      <CabPrefeitura />
+      <ScrollView style={styles.scroll}>
         <Card containerStyle={styles.card}>
           <Text style={styles.title}>Registro do Atleta</Text>
 
@@ -69,10 +75,15 @@ export default function SportsForm() {
               <Picker
                 selectedValue={selectedValue}
                 style={styles.input}
-                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-              >
+                onValueChange={(itemValue) => setSelectedValue(itemValue)}>
                 <Picker.Item label="Unileste" value="Unileste" />
-                <Picker.Item label="Escola Municipal Maria da Penha Lima" value="Escola Municipal Maria da Penha Lima" />
+                <Picker.Item label="Escola 2" value="Escola 2" />
+                <Picker.Item label="Escola 3" value="Escola 3" />
+                <Picker.Item label="Escola 4" value="Escola 4" />
+                <Picker.Item label="Escola 5" value="Escola 5" />
+                <Picker.Item label="Escola 6" value="Escola 6" />
+                <Picker.Item label="Escola 7" value="Escola 7" />
+                <Picker.Item label="Escola 8" value="Escola 8" />
               </Picker>
             </View>
 
@@ -109,13 +120,12 @@ export default function SportsForm() {
               <Picker
                 selectedValue={sexoAtleta}
                 style={styles.input}
-                onValueChange={(itemValue, itemIndex) => setSexoSelectedValue(itemValue)}
-              >
+                onValueChange={(itemValue) => setSexoSelectedValue(itemValue)}>
                 <Picker.Item label="Masculino" value="Masculino" />
                 <Picker.Item label="Feminino" value="Feminino" />
               </Picker>
             </View>
-            
+
             <Text>Altura</Text>
             <TextInput
               style={styles.input}
@@ -137,11 +147,20 @@ export default function SportsForm() {
             }>
             <Text style={styles.subtitle}>⚽🏀 Modalidade 🏐🎯</Text>
             <Text>Modalidade</Text>
-            <TextInput
+            <Picker
               style={styles.input}
-              value={modalidade}
-              onChangeText={(text) => setModalidade(text)}
-            />
+              selectedValue={modalidade}
+              onValueChange={(itemValue) => setModalidade(itemValue)}>
+              <Picker.Item label="Futebol⚽" value="Futebol" />
+              <Picker.Item label="Volei🏐" value="Volei" />
+              <Picker.Item label="Xadrez♟" value="Xadrez" />
+              <Picker.Item label="Basquete🏀" value="Basquete" />
+              <Picker.Item label="Handbol⚽" value="Handbol" />
+              <Picker.Item label="Truco🃏" value="Truco" />
+              <Picker.Item label="Tenis🥎" value="Tênis" />
+              <Picker.Item label="Natação🏊‍♀️" value="Natação" />
+              <Picker.Item label="Corrida🏃‍♂️" value="Corrida" />
+            </Picker>
           </Card>
 
           <Card.Divider />
@@ -150,13 +169,13 @@ export default function SportsForm() {
             <Text style={styles.buttonText}>Confirmar Cadastro</Text>
           </TouchableOpacity>
         </Card>
+        <View style={stylesG.poucoDeEspaco}></View>
       </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-
   title: {
     fontSize: 40,
     fontWeight: 'bold',

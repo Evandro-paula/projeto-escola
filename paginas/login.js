@@ -6,7 +6,9 @@ const avatar = require('../assets/logoEmblema.png');
 export default function Login({ navigation }) {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
-
+  const Cadastro = () => {
+    navigation.navigate('Cadastro');
+  }
   const ExisteEsseUsuario = () => {
     if (usuario === 'adm' && senha === '123') {
       navigation.navigate('Rotas'); // Navegar para a tela do menu após o login
@@ -14,17 +16,10 @@ export default function Login({ navigation }) {
       alert('Usuário ou senha inválido');
     }
   };
-  const handleRegister = () => {
-    Linking.openURL('mailto:evandro.paula@a.unileste.edu.br?subject=Registro%20de%20Conta');
-  };
-
+  
   const handleResetPassword = () => {
     Alert.alert('Reiniciar Senha', 'Digite o seu endereço de e-mail para reiniciar a senha',)
-
-    onPress: (email) => {
-
-            console.log('Email:', email);
-          };
+Linking.openURL('mailto:evandro.paula@a.unileste.edu.br?subject=Registro%20de%20Conta');
   };
 
   return (
@@ -45,13 +40,13 @@ export default function Login({ navigation }) {
           onChangeText={setUsuario}
         ></TextInput>
         <Text style={stylesG.text}>Senha</Text>
-        <TextInput style={stylesG.Input} value={senha} onChangeText={setSenha} placeholder="Senha"></TextInput>
+        <TextInput style={stylesG.Input} value={senha} onChangeText={setSenha} placeholder="Senha" secureTextEntry={true}></TextInput>
 
         <TouchableOpacity style={stylesG.botao} onPress={ExisteEsseUsuario}>
           <Text style={stylesG.textoDoBotao}>Acessar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleRegister}>
+        <TouchableOpacity onPress={Cadastro}>
           <Text style={stylesG.linkText}>
             Ainda não tem uma conta? Registre-se
           </Text>

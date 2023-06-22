@@ -2,13 +2,22 @@ import React, { useState } from 'react';
 
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
-import cabPrefeitura from '../components/CabPrefeituraLogo';
+
+import CabPrefeitura from '../components/CabPrefeituraLogo';
+
 import stylesG from '../styles/styleGlobal';
 
-export default function Perfil() {
+export default function Perfil({ navigation }) {
+  const usuario = 'Administrador(a)';
+
+  const Sair = () => {
+    navigation.navigate('login'); // Navegar para a tela de login
+  };
+
   return (
     <View style={stylesG.container}>
-      <cabPrefeitura />
+      <CabPrefeitura />
+      <View style={styles.poucoDeEspaco}></View>
       <Card containerStyle={stylesG.card}>
         <View style={stylesG.jogaDladinho}>
           <Image
@@ -17,10 +26,10 @@ export default function Perfil() {
           />
         </View>
 
-        <Text style={styles.identificacao}>Usuario#0000</Text>
+        <Text style={styles.identificacao}>{usuario}</Text>
         <Card.Divider />
 
-        <TouchableOpacity style={styles.botao}>
+        <TouchableOpacity style={styles.botao} onPress={Sair}>
           <Text style={stylesG.textoDoBotao}>logout</Text>
         </TouchableOpacity>
       </Card>
@@ -31,8 +40,6 @@ export default function Perfil() {
 const styles = StyleSheet.create({
   botao: {
     justifyContent: 'center',
-    alignItems: 'center',
-
     width: '100%',
     height: 58,
     borderRadius: 5,
